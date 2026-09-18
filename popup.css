@@ -1,0 +1,287 @@
+/* ============================
+   eBay Product Scraper — Popup
+   Dark industrial minimal theme
+   ============================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:        #0f0f11;
+  --surface:   #1a1a1f;
+  --surface2:  #22222a;
+  --border:    #2e2e38;
+  --accent:    #f6c90e;
+  --accent-dk: #c9a30a;
+  --text:      #e8e8f0;
+  --muted:     #7a7a90;
+  --green:     #3dd68c;
+  --red:       #f06060;
+  --radius:    8px;
+  --mono:      'DM Mono', monospace;
+  --sans:      'DM Sans', sans-serif;
+}
+
+html, body {
+  width: 360px;
+  min-height: 120px;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 13px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 120px;
+}
+
+/* ── Header ── */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px 10px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  width: 34px;
+  height: 34px;
+  background: var(--accent);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  flex-shrink: 0;
+}
+
+.app-title {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--text);
+  letter-spacing: -0.2px;
+}
+
+.app-subtitle {
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* ── Scrape Button ── */
+.btn-scrape {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--accent);
+  color: #000;
+  border: none;
+  border-radius: 6px;
+  padding: 7px 12px;
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.2px;
+  transition: background 0.15s, transform 0.1s;
+}
+
+.btn-scrape:hover { background: var(--accent-dk); }
+.btn-scrape:active { transform: scale(0.96); }
+.btn-scrape.loading { opacity: 0.6; pointer-events: none; }
+
+/* ── Status Bar ── */
+.status-bar {
+  padding: 7px 14px;
+  font-size: 11.5px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border-bottom: 1px solid var(--border);
+}
+
+.status-idle   { color: var(--muted); background: transparent; }
+.status-loading { color: var(--accent); background: rgba(246,201,14,0.06); }
+.status-success { color: var(--green); background: rgba(61,214,140,0.06); }
+.status-error   { color: var(--red);   background: rgba(240,96,96,0.06); }
+
+.status-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  flex-shrink: 0;
+  animation: pulse 1.2s ease infinite;
+}
+
+@keyframes pulse {
+  0%,100% { opacity: 1; }
+  50%      { opacity: 0.3; }
+}
+
+/* ── Fields Container ── */
+.fields-container {
+  padding: 6px 0;
+  flex: 1;
+}
+
+.empty-state {
+  padding: 28px 20px;
+  text-align: center;
+  color: var(--muted);
+}
+
+.empty-state svg {
+  opacity: 0.3;
+  margin-bottom: 8px;
+  display: block;
+  margin-inline: auto;
+}
+
+.empty-state p {
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+/* ── Field Row ── */
+.field-row {
+  display: flex;
+  align-items: flex-start;
+  padding: 5px 14px;
+  border-radius: 0;
+  gap: 10px;
+  cursor: pointer;
+  transition: background 0.1s;
+  position: relative;
+}
+
+.field-row:hover {
+  background: var(--surface);
+}
+
+.field-row:hover .copy-hint {
+  opacity: 1;
+}
+
+.field-label {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--muted);
+  min-width: 72px;
+  padding-top: 2px;
+  flex-shrink: 0;
+}
+
+.field-value {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text);
+  word-break: break-word;
+  flex: 1;
+  line-height: 1.5;
+}
+
+.field-value.highlighted {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.copy-hint {
+  font-size: 9px;
+  color: var(--muted);
+  opacity: 0;
+  transition: opacity 0.15s;
+  padding-top: 3px;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.divider {
+  height: 1px;
+  background: var(--border);
+  margin: 4px 14px;
+  opacity: 0.6;
+}
+
+/* ── Section Label ── */
+.section-label {
+  font-size: 9.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--muted);
+  padding: 10px 14px 3px;
+}
+
+/* ── Footer ── */
+.footer {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.btn-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  border-radius: 6px;
+  padding: 6px 11px;
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+  transition: background 0.15s, opacity 0.15s;
+  letter-spacing: 0.1px;
+}
+
+.btn-primary  { background: var(--accent); color: #000; }
+.btn-primary:hover  { background: var(--accent-dk); }
+
+.btn-secondary { background: var(--surface2); color: var(--text); border: 1px solid var(--border); }
+.btn-secondary:hover { background: var(--border); }
+
+.btn-ghost  { background: transparent; color: var(--muted); border: 1px solid var(--border); margin-left: auto; }
+.btn-ghost:hover { color: var(--text); border-color: var(--muted); }
+
+/* ── Toast ── */
+.toast {
+  position: fixed;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: var(--green);
+  color: #000;
+  font-weight: 700;
+  font-size: 12px;
+  padding: 6px 16px;
+  border-radius: 20px;
+  opacity: 0;
+  transition: opacity 0.2s, transform 0.2s;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
