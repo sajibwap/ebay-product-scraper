@@ -22,7 +22,7 @@
 }
 
 html, body {
-  width: 360px;
+  width: 100%;
   min-height: 120px;
   background: var(--bg);
   color: var(--text);
@@ -228,6 +228,17 @@ html, body {
   padding: 10px 14px 3px;
 }
 
+.item-id {
+  margin-left: 8px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  color: var(--accent);
+  cursor: pointer;
+}
+.item-id:hover { text-decoration: underline; }
+
 /* ── Footer ── */
 .footer {
   display: flex;
@@ -262,6 +273,119 @@ html, body {
 
 .btn-ghost  { background: transparent; color: var(--muted); border: 1px solid var(--border); margin-left: auto; }
 .btn-ghost:hover { color: var(--text); border-color: var(--muted); }
+
+.btn-action:disabled { opacity: 0.6; cursor: default; }
+
+.btn-block { width: calc(100% - 28px); margin: 6px 14px 10px; justify-content: center; }
+
+/* ── Header icon button ── */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.btn-icon:hover { color: var(--text); border-color: var(--muted); }
+
+/* ── Tabs ── */
+.tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.tab {
+  flex: 1;
+  background: transparent;
+  color: var(--muted);
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 8px 0 6px;
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.tab:hover { color: var(--text); }
+.tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+.tab-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── AI Bullet Points ── */
+.ai-panel {
+  padding-bottom: 4px;
+}
+
+.ai-hint {
+  padding: 6px 14px 2px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.ai-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding-right: 14px;
+}
+
+.ai-actions {
+  display: flex;
+  gap: 4px;
+}
+
+.btn-mini {
+  background: var(--surface2);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1px 7px;
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-mini:hover { background: var(--border); }
+
+.bullet-row .field-label {
+  min-width: 14px;
+  color: var(--accent);
+}
+
+.bullet-row .field-value {
+  font-family: var(--sans);
+}
+
+.ai-status {
+  padding: 4px 14px 0;
+  font-size: 11.5px;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.ai-status:empty { display: none; }
+.ai-status.error { color: var(--red); }
 
 /* ── Toast ── */
 .toast {

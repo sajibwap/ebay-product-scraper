@@ -23,13 +23,21 @@
           <div class="app-subtitle">Product Data Extractor</div>
         </div>
       </div>
-      <button id="btn-scrape" class="btn-scrape" title="Scrape product data">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-          <polyline points="1 4 1 10 7 10"/>
-          <path d="M3.51 15a9 9 0 1 0 .49-3.56"/>
-        </svg>
-        Scrape
-      </button>
+      <div class="header-right">
+        <button id="btn-settings" class="btn-icon" title="AI settings">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+          </svg>
+        </button>
+        <button id="btn-scrape" class="btn-scrape" title="Scrape product data">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="1 4 1 10 7 10"/>
+            <path d="M3.51 15a9 9 0 1 0 .49-3.56"/>
+          </svg>
+          Scrape
+        </button>
+      </div>
     </header>
 
     <!-- Status bar -->
@@ -37,6 +45,14 @@
       <span id="status-text">Click "Scrape" on an eBay product page</span>
     </div>
 
+    <!-- Tabs — shown once a listing is scraped -->
+    <div id="tabs" class="tabs" style="display:none">
+      <button class="tab active" data-tab="tab-details">Details</button>
+      <button class="tab" data-tab="tab-bullets">✨ AI Bullets</button>
+    </div>
+
+    <!-- Details tab -->
+    <div id="tab-details" class="tab-panel">
     <!-- Data fields -->
     <div id="fields-container" class="fields-container">
       <!-- Dynamically populated -->
@@ -64,6 +80,22 @@
         </svg>
         Description
       </button>
+    </div>
+    </div>
+
+    <!-- AI Bullets tab -->
+    <div id="tab-bullets" class="tab-panel ai-panel" style="display:none">
+      <div class="ai-head">
+        <div class="section-label">✨ AI Bullet Points</div>
+        <div id="bullet-actions" class="ai-actions" style="display:none">
+          <button id="btn-copy-bullets" class="btn-mini" title="Copy all bullets as plain text">Copy</button>
+          <button id="btn-copy-bullets-html" class="btn-mini" title="Copy all bullets as an HTML list">HTML</button>
+        </div>
+      </div>
+      <p id="ai-empty" class="ai-hint">Generates 5 bullet points from this listing's specifications and description.</p>
+      <div id="bullets-list"></div>
+      <div id="ai-status" class="ai-status"></div>
+      <button id="btn-generate" class="btn-action btn-primary btn-block">Generate 5 Bullet Points</button>
     </div>
 
     <!-- Toast notification -->

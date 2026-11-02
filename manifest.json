@@ -2,15 +2,21 @@
   "manifest_version": 3,
   "name": "eBay Product Scraper",
   "description": "Instantly extract and copy product details from eBay listings",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "icons": {
     "16": "images/icon16.png"
   },
-  "permissions": ["contextMenus", "tabs", "activeTab", "clipboardWrite"],
+  "permissions": ["contextMenus", "tabs", "activeTab", "clipboardWrite", "storage", "downloads", "sidePanel"],
   "host_permissions": ["*://*/*"],
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
   "action": {
-    "default_popup": "popup.html",
     "default_title": "eBay Product Scraper"
+  },
+  "side_panel": {
+    "default_path": "popup.html"
   },
   "content_scripts": [
     {

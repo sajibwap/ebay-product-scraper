@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Download as JPG</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="save-jpg.css">
+</head>
+<body>
+  <main class="page">
+    <header class="page-header">
+      <h1>Download as JPG</h1>
+      <span id="dimensions" class="dimensions"></span>
+    </header>
+
+    <div class="preview">
+      <img id="preview" alt="">
+    </div>
+
+    <div id="status" class="status">Converting image…</div>
+
+    <button id="btn-save" class="btn-save" disabled>
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+        <polyline points="7 10 12 15 17 10"/>
+        <line x1="12" y1="15" x2="12" y2="3"/>
+      </svg>
+      Save as JPG…
+    </button>
+  </main>
+
+  <script src="save-jpg.js"></script>
+</body>
+</html>
